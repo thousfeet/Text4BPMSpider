@@ -4,7 +4,6 @@
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-from tabulate import tabulate
 
 class RecipespiderPipeline(object):
 
@@ -34,18 +33,7 @@ class RecipespiderPipeline(object):
                 if step:
                     text = text + step.strip() + ". "
 
-            item['directions'] = text.strip()
-            # print("=============================================================")
             print(text, "\n")
-            # print("开始打标：1.ROLE 2.ACTION 3.NONE\n")
-            # words = text.split()
-            # tagging_enum = ["ROLE", "ACTION", "NONE"]
-            # tag = []
-            # for word in words:
-            #     index = input(word, "\n")
-            #     tag.append(tagging_enum[index-1])
-            # print(tabulate(tag))
-            # print("是否需要修改？")
-            # item['tag'] = " ".join(tag)
-            # print("=============================================================")
+            item['directions'] = text.strip()
+
         return item
