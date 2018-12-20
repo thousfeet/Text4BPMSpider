@@ -10,6 +10,6 @@ import scrapy
 
 class RecipespiderItem(scrapy.Item):
     # define the fields for your item here like:
-    ingredients = scrapy.Field()
     directions = scrapy.Field()
+    # tag = scrapy.Field()
     pass

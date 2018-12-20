@@ -14,7 +14,7 @@ class RecipeSpider(Spider):
     }
 
     def start_requests(self):
-        for i in range(1, 3):
+        for i in range(1, 6):
             url = 'https://www.allrecipes.com/?page=' + str(i)
             yield Request(url, headers=self.headers)
 
@@ -26,6 +26,7 @@ class RecipeSpider(Spider):
 
     def parse_content(self, response):
         item = RecipespiderItem()
-        item['ingredients'] = response.xpath('//span[@class="recipe-ingred_txt added"]/text()').extract()
-        item['directions'] = response.xpath('//span[@class="recipe-directions__list--item"]/text()').extract()
-        yield item
+        step_list = response.xpath('//span[@class="recipe-directions__list--item"]/text()').extract()
+        item['directions'] = step_list
+        if item['directions']:
+            yield item
