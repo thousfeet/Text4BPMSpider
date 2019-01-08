@@ -13,3 +13,8 @@ class RecipespiderItem(scrapy.Item):
     directions = scrapy.Field()
     # tag = scrapy.Field()
     pass
+
+
+class GuidespiderItem(scrapy.Item):
+    # define the fields for your item here like:
+    guide = scrapy.Field()
